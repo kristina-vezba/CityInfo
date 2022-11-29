@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Zadatak 3</title>
+    <link rel="stylesheet" href="email.css" type="text/css">
+    <script src="email.js"></script>
+  </head>
+
+  <body onload="document.form1.text1.focus()">
+    <div class="mail">
+      <h2>Unesite email addresu</h2>
+      <form name="form1" method="post" action="">
+        <input type="text" name="text1"><br><br>
+        <input type="submit"name="validate" value="Validate" onclick="ValidateEmail(document.form1.text1)">
+      </form>
+    </div>
+      
+<script>
+function ValidateEmail(input) {
+let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (input.value.match(validRegex)) {
+    alert("Validna email addresa!");
+    document.form1.text1.focus();
+    return true;
+  } else {
+    alert("Email addresa je nepostojeca!");
+    document.form1.text1.focus();
+    return false;
+  }
+}
+</script>
+
+  </body>
+</html>
