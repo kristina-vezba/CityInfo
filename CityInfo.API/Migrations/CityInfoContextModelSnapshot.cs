@@ -67,6 +67,7 @@ namespace CityInfo.API.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
@@ -79,7 +80,7 @@ namespace CityInfo.API.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("PoinOfInterests");
+                    b.ToTable("PointsOfInterest");
 
                     b.HasData(
                         new
@@ -126,33 +127,33 @@ namespace CityInfo.API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CityInfo.API.Models.PointOfInterestDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            //modelBuilder.Entity("CityInfo.API.Models.PointOfInterestDto", b =>
+            //    {
+            //        b.Property<int>("Id")
+            //            .ValueGeneratedOnAdd()
+            //            .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CityId")
-                        .HasColumnType("INTEGER");
+            //        b.Property<int?>("CityId")
+            //            .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+            //        b.Property<string>("Description")
+            //            .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+            //        b.Property<string>("Name")
+            //            .IsRequired()
+            //            .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+            //        b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+            //        b.HasIndex("CityId");
 
-                    b.ToTable("PointOfInterestDto");
-                });
+            //        b.ToTable("PointOfInterestDto");
+            //    });
 
             modelBuilder.Entity("CityInfo.API.Entities.PointOfInterest", b =>
                 {
                     b.HasOne("CityInfo.API.Entities.City", "City")
-                        .WithMany()
+                        .WithMany("PointsOfInterest")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -160,12 +161,12 @@ namespace CityInfo.API.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("CityInfo.API.Models.PointOfInterestDto", b =>
-                {
-                    b.HasOne("CityInfo.API.Entities.City", null)
-                        .WithMany("PointsOfInterest")
-                        .HasForeignKey("CityId");
-                });
+            //modelBuilder.Entity("CityInfo.API.Models.PointOfInterestDto", b =>
+            //    {
+            //        b.HasOne("CityInfo.API.Entities.City", null)
+            //            .WithMany("PointsOfInterest")
+            //            .HasForeignKey("CityId");
+            //    });
 
             modelBuilder.Entity("CityInfo.API.Entities.City", b =>
                 {

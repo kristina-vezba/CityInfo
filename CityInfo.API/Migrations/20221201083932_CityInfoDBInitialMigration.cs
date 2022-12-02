@@ -23,7 +23,7 @@ namespace CityInfo.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PoinOfInterests",
+                name: "PointsOfInterest",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -33,53 +33,53 @@ namespace CityInfo.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PoinOfInterests", x => x.Id);
+                    table.PrimaryKey("PK_PointsOfInterest", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PoinOfInterests_Cities_CityId",
+                        name: "FK_PointsOfInterest_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "PointOfInterestDto",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    CityId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PointOfInterestDto", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PointOfInterestDto_Cities_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Cities",
-                        principalColumn: "Id");
-                });
+            //migrationBuilder.CreateTable(
+            //    name: "PointOfInterestDto",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "INTEGER", nullable: false)
+            //            .Annotation("Sqlite:Autoincrement", true),
+            //        Name = table.Column<string>(type: "TEXT", nullable: false),
+            //        Description = table.Column<string>(type: "TEXT", nullable: true),
+            //        CityId = table.Column<int>(type: "INTEGER", nullable: true)
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_PointOfInterestDto", x => x.Id);
+            //        table.ForeignKey(
+            //            name: "FK_PointOfInterestDto_Cities_CityId",
+            //            column: x => x.CityId,
+            //            principalTable: "Cities",
+            //            principalColumn: "Id");
+            //    });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PoinOfInterests_CityId",
-                table: "PoinOfInterests",
+                name: "IX_PointsOfInterest_CityId",
+                table: "PoitsnOfInterest",
                 column: "CityId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_PointOfInterestDto_CityId",
-                table: "PointOfInterestDto",
-                column: "CityId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_PointOfInterestDto_CityId",
+            //    table: "PointOfInterestDto",
+            //    column: "CityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PoinOfInterests");
+                name: "PointsOfInterest");
 
-            migrationBuilder.DropTable(
-                name: "PointOfInterestDto");
+            //migrationBuilder.DropTable(
+            //    name: "PointOfInterestDto");
 
             migrationBuilder.DropTable(
                 name: "Cities");
